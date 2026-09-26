@@ -1,677 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>极致网络社----TOPSOFT-international</title>
-<!--
-  *                  ___====-_  _-====___
- *            _--^^^#####//      \\#####^^^--_
- *         _-^##########// (    ) \\##########^-_
- *        -############//  |\^^/|  \\############-
- *      _/############//   (@::@)   \\############\_
- *     /#############((     \\//     ))#############\
- *    -###############\\    (oo)    //###############-
- *   -#################\\  / VV \  //#################-
- *  -###################\\/      \//###################-
- * _#/|##########/\######(   /\   )######/\##########|\#_
- * |/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|
- * `  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '
- *    `   `  `      `   / | |  | | \   '      '  '   '
- *                     (  | |  | |  )
- *                    __\ | |  | | /__
- *                   (vvv(VVV)(VVV)vvv)
- *                        神兽保佑
- *                       代码无BUG!
- *                   TopSoft官网建设团队
-
- 好好写代码才是保证代码不出Bug的好方法，给我好好学代码！------By awcyvan
--->
-<meta content="width=device-width,initial-scale=1.0" name="viewport"><meta content="极致网络社|HTML|PHP|JavaScript|C+-Design.God" name="keywords"><meta content="极致网络社|HTML|PHP|JavaScript|C+-Design.God" name="description"><meta name="author" content="极致网络社" />
-<link href="vge.ico" rel="icon" />
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
-<link href="static/css/f8c6581fe185426daa631f47e2e71a60.css" rel="stylesheet" />
-<link href="static/css/bootstrap.min.css" rel="stylesheet" />
-<link href="static/css/font-awesome.min.css" rel="stylesheet" />
-<link href="static/css/animate.min.css" rel="stylesheet" />
-<link href="static/css/ionicons.min.css" rel="stylesheet" />
-<link href="static/css/owl.carousel.min.css" rel="stylesheet" />
-<link href="static/css/lightbox.min.css" rel="stylesheet" />
-<link href="static/css/style.css" rel="stylesheet" />
-<script type="text/javascript" src="./static/js/jquery.min.js"></script>
-<script>
-    var _hmt=_hmt || [];
-    (function() {
-    var hm=document.createElement("script");
-    hm.src="../hm.baidu.com/hm3ba8.js?1d14fb3781d989b9eb5c2c333f5135fe";
-    var s=document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm,s);
-    })();
-  </script><script>
-    (function(){
-    var bp=document.createElement('script');
-    var curProtocol=window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src='../zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src='../push.zhanzhang.baidu.com/push.js';
-    }
-    var s=document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp,s);
-    })();
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>极致网络社 · TOPSOFT-international</title>
+  <meta name="description" content="极致网络社 TOPSOFT-international：由高中生维护的计算机技术社团。">
+  <meta name="author" content="极致网络社">
+  <link rel="icon" href="static/vge.ico">
+  <link rel="stylesheet" href="static/css/modern.css">
 </head>
 <body>
-<header id="header">
-<div class="container-fluid">
-<div class="pull-left" id="logo">
-<h4 style="color:white">极致网络社----TOPSOFT-international</h4>
-</div>
+  <a class="skip-link" href="#main">跳到主要内容</a>
 
-<!-- awcyvan到此一游 -->
-<style>
-    @media (hover:hover){
-        #awcyvan_clock{
-            position:fixed;
-            top:90%;
-            left:80%;
-            width:20%;
-            height:20%;
-            border:none;
-            margin:0;
-            padding:0;
-            overflow:hidden;
-            z-index:-1;
-            opacity:1;
-        }
-    }
-    @media not (hover:hover){
-        #awcyvan_clock{
-            position:fixed;
-            top:88%;
-            left:55%;
-            width:50%;
-            height:50%;
-            border:none;
-            margin:0;
-            padding:0;
-            overflow:hidden;
-            z-index:-1;
-            opacity:1;
-        }
-    }
-</style>
-<iframe id="awcyvan_clock" src="./clock.html" frameborder="0" scrolling="no"></iframe>
+  <header class="site-header" id="header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span>
+          <strong>极致网络社</strong>
+          <small>TOPSOFT-international</small>
+        </span>
+      </a>
 
-<style>
-    .awcyvan_heart{
-        position: fixed;
-        height: 60px;
-        width: 60px;
-        left: 5%;
-        top: 90%;
-    }
-    .heart{
-        height: 50%;
-        width: 50%;
-        background: #f20044;
-        position: relative;
-        transform: rotate(-45deg);
-        box-shadow: -5px 5px 45px #f20044;
-        animation: heart 0.2s linear;/*  infinite */
-    }
-    .heart:active{
-        animation: none;
-    }
-    @keyframes heart {
-        0% {
-            transform: rotate(-45deg) scale(1.07);
-        }
-        80% {
-            transform: rotate(-45deg) scale(1);
-        }
-        100% {
-            transform: rotate(-45deg) scale(0.8);
-        }
-    }
-    .heart::before {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: #f20044;
-        top: -50%;
-        border-radius: 50%;
-        box-shadow: -5px -5px 45px #f20044;
-    }
-    .heart::after {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: #f20044;
-        right: -50%;
-        border-radius: 50%;
-        box-shadow: 5px 5px 45px #f20044;
-    }
-</style>
-<div class="awcyvan_heart">
-    <div class="heart"></div>
-</div>
-<script>
-    $(".heart").on("click", function(e){
-        var $i=$("<b>").text("♥+" + 1);
-        var x=e.pageX,y=e.pageY;
-        $i.css({
-            top: y-20,
-            left: x,
-            position: "absolute",
-            color: "#f20044"
-        });
-        $("body").append($i);
-        $i.animate({
-            top: y-120,
-            opacity: 0,
-            "font-size": "1.4em"
-        },1500,function() {
-            $i.remove();
-        });
-        e.stopPropagation();
-    })
-</script>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="sr-only">打开导航</span>
+      </button>
 
-<bar id="nav-menu-container">
-<ul class="nav-menu">
-	<li class="menu-active"><a href="#intro">团队首页</a></li>
-	<li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">技术探讨</a></li>
-	<li><a class="btn-get-started scrollto" href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">联系我们</a></li>
-  <li><a class="btn-get-started scrollto" href="http://love.exclub.top/">泸州高中极致表白墙</a></li>
-  <li><a class="btn-get-started scrollto" href="./404.html">极致MC服务器待建……ing</a></li>
-  <li><a class="btn-get-started scrollto" href="http://shop.exclub.top/">极致网络商城</a></li>
-</ul>
-</bar>
-</div>
-</header>
-
-<section id="intro">
-<div class="intro-container">
-<div class="carousel  slide carousel-fade" data-ride="carousel" id="introCarousel">
-<ol class="carousel-indicators">
-</ol>
-
-<div class="carousel-inner" role="listbox">
-<div class="carousel-item active" style="background-image: url('static/images/bg.png');">
-<div class="carousel-container">
-<div class="carousel-content">
-<h2>极致网络社----TOPSOFT-international</h2>
-
-<p>极致网络社TOPSOFT-international由一群网络爱好者热爱计算机的青年组成的团队，我们一起学习网络技术，欢迎各位网络计算机爱好者加入我们。</p>
-<a class="btn-get-started scrollto" href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">联系我们</a></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<main id="main">
-<section id="services">
-<div class="container">
-<header class="section-header wow fadeInUp">
-<h3>Services</h3>
-
-<p>不忘初心，方得始终.</p>
-</header>
-
-<div class="row">
-<div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-<div class="icon"></div>
-
-<h4 class="title"><a href="https://awcyvan.github.io/exclub.github.io/">极致网络社-</a></h4>
-
-<p class="description">丰富的经验，强硬的实力胜过一切</p>
-</div>
-
-<div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
-<div class="icon"></div>
-
-<h4 class="title"><a href=https://tool.gljlw.com/qq/?qq=1393889317">技术支持以及指导</a></h4>
-
-<p class="description">想学技术吗？加入极致网络社</p>
-</div>
-
-</div>
-</div>
-</div>
-</section>
-
-<section id="team">
-<div class="container">
-<div class="section-header wow fadeInUp">
-<h3>Team</h3>
-
-<p>年龄小但不代表我们实力差，沉默是金.</p>
-</div>
-
-<style>
-    .awcyvan_container{
-        position: relative;
-        display: flex;
-        padding: 80px 10px;
-        flex-wrap: wrap;
-        gap: 80px;
-    }
-    .awcyvan_card{
-        position: relative;
-        display: flex;
-        height: 180px;
-        width: 350px;
-        background: #333;
-        transition: 0.5s;
-    }
-    .awcyvan_card:hover{
-        height: 450px;
-    }
-    .awcyvan_card .lines{
-        position: absolute;
-        inset: 0;
-        background: #000;
-        overflow: hidden;
-    }
-    .awcyvan_card .lines::before{
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 600px;
-        height: 150px;
-        background: linear-gradient(transparent,#45f3ff,#45f3ff,#45f3ff,transparent);
-        animation: animate 4s linear infinite;
-        animation-play-state: paused;
-    }
-    .awcyvan_card:hover .lines::before{
-        animation-play-state: running;
-    }
-    @keyframes animate{
-        0%{
-            transform: translate(-50%,-50%) rotate(0deg);
-        }
-        100%{
-            transform: translate(-50%,-50%) rotate(360deg);
-        }
-    }
-    .awcyvan_card .lines::after{
-        content: '';
-        position: absolute;
-        inset: 3px;
-        background: #292929;
-    }
-    .awcyvan_card .imgbox{
-        position: absolute;
-        top: -30%;
-        left: 50%;
-        width: 120px;
-        height: 120px;
-        transform: translateX(-50%);
-        background: #000;
-        transition: 0.5s;
-        z-index: 10;
-        overflow: hidden;
-    }
-    .awcyvan_card:hover .imgbox{
-        top: 5%;
-        width: 200px;
-        height: 200px;
-    }
-    .awcyvan_card .imgbox::before{
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 500px;
-        height: 100px;
-        transform: translate(-50%,-50%);
-        background: linear-gradient(transparent,#ff3c7b,#ff3c7b,#ff3c7b,transparent);
-        animation: animate2 6s linear infinite;
-        animation-play-state: paused;
-    }
-    .awcyvan_card:hover .imgbox::before{
-        animation-play-state: running;
-    }
-    @keyframes animate2{
-        0%{
-            transform: translate(-50%,-50%) rotate(360deg);
-        }
-        100%{
-            transform: translate(-50%,-50%) rotate(0deg);
-        }
-    }
-    .awcyvan_card .imgbox::after{
-        content: '';
-        position: absolute;
-        inset: 3px;
-        background: #292929;
-    }
-    .awcyvan_card .imgbox img{
-        position: absolute;
-        left: 2%;
-        top: 2%;
-        width: 96%;
-        z-index: 1;
-        /* filter: invert(1); */
-        opacity: 0.5;
-        transition: 0.5s;
-    }
-    .awcyvan_card:hover .imgbox img{
-        opacity: 1;
-    }
-    .awcyvan_card .content{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-    .awcyvan_card .content .details{
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        transform: translateY(50%);
-    }
-    .awcyvan_card .content .details h2{
-        font-size: 1.5em;
-        font-weight: 500;
-        color: #45f3ff;
-        line-height: 1.2em;
-    }
-    .awcyvan_card .content .details p{
-        color: #fff;
-        opacity: 0;
-        transition: 0.5s;
-    }
-    .awcyvan_card:hover .content .details p{
-        opacity: 1;
-    }
-    .awcyvan_card .content .details span{
-        color: #ff3c7b;
-        opacity: 0;
-        transition: 0.5s;
-    }
-    .awcyvan_card:hover .content .details span{
-        opacity: 1;
-    }
-</style>
-<div class="row">
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1393889317&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>彷徨中独步</h2>
-                    <p>极致网络社<br />
-                    2021级成员<br />
-                    网站负责人</p>
-                    <span>QQ:1393889317</span><br>
-                    <span>Email:1393889317@qq.com</span>
-                </div>
-            </div>
-        </div>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a class="is-active" href="#top">首页</a>
+        <a href="#about">我们在做什么</a>
+        <a href="#team">成员</a>
+        <a href="#resources">资源</a>
+        <a class="nav-join" href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&amp;jump_from=webapi&amp;authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE" target="_blank" rel="noopener">加入讨论</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3260893736&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>内卷魔方鸭</h2>
-                    <p>极致网络社<br />
-                    2022级成员<br />
-                    C++大佬</p>
-                    <span>QQ:3260893736</span><br>
-                    <span>Email:3260893736@qq.com</span>
-                </div>
-            </div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">学生技术社团 · 方向讨论中</p>
+          <h1 id="hero-title">极致网络社</h1>
+          <p class="hero-lead">由一群网络爱好者、计算机爱好者组成的团队。我们一起学习网络技术，也在尝试把社团做成一个能动手实践、交流想法的地方。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#about">看看我们在做什么 <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&amp;jump_from=webapi&amp;authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE" target="_blank" rel="noopener">联系社团 <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-    </div>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3156477473&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>鑫骐</h2>
-                    <p>极致网络社<br />
-                    2022级社长<br />
-                    C++大佬</p>
-                    <span>QQ:3156477473</span><br>
-                    <span>Email:3156477473@qq.com</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2494812413&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>溪深而鱼肥</h2>
-                    <p>极致网络社<br />
-                    2021级社长<br />
-                    擅长影视后期，前期拍摄</p>
-                    <span>QQ:2494812413</span><br>
-                    <span>Email:2494812413@qq.com</span>
-                </div>
-            </div>
-        </div>
-    </div>
+        <aside class="direction-note" aria-labelledby="direction-title">
+          <div class="note-topline"><span class="status-dot" aria-hidden="true"></span> 目前状态</div>
+          <h2 id="direction-title">我们还在把方向说清楚</h2>
+          <p>社团正在从原来的“网络社”逐步转向学科与技术方向。暂时的想法是：</p>
+          <ul>
+            <li><strong>基础普及</strong>作为入口</li>
+            <li><strong>实践项目</strong>作为主体</li>
+            <li><strong>竞赛进阶</strong>作为补充</li>
+          </ul>
+          <p class="note-foot">具体内容会先通过调研和活动试运行，再继续调整。</p>
+        </aside>
+      </div>
+    </section>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3565756799&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>ah</h2>
-                    <p>极致网络社<br />
-                    2022级成员<br />
-                    城西校区现任社长</p>
-                    <span>QQ:3565756799</span><br>
-                    <span>Email:3565756799@qq.com</span>
-                </div>
-            </div>
+    <section class="section intro-section" id="about" aria-labelledby="about-title">
+      <div class="shell two-column">
+        <div class="section-heading">
+          <p class="eyebrow">我们在做什么</p>
+          <h2 id="about-title">先做起来，<br><em>再决定走多远。</em></h2>
         </div>
-    </div>
+        <div class="section-copy">
+          <p class="lead">社团目前仍然以计算机为核心，面向不同基础的同学开展计算机与人工智能基础知识的普及、实践和交流。</p>
+          <p>转型不是把社团变成竞赛班、补课班或软件培训班。我们希望每次活动都尽量有一个清楚的小目标：认识一个问题，完成一次实践，留下可以继续使用的作品、记录或资料。</p>
+          <div class="principles" aria-label="社团当前的三个方向">
+            <div class="principle"><span>01</span><h3>认识技术</h3><p>计算机基础、网络与信息安全、人工智能基本概念。</p></div>
+            <div class="principle"><span>02</span><h3>动手实践</h3><p>Python、简单网页、数据处理和面向实际问题的小工具。</p></div>
+            <div class="principle"><span>03</span><h3>一起复盘</h3><p>展示结果、讨论问题，再决定下一次活动怎么改。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2325194851&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>和风</h2>
-                    <p>极致网络社<br />
-                    2021级城西社长<br />
-                    </p>
-                    <span>QQ:2325194851</span><br>
-                    <span>Email:2325194851@qq.com</span>
-                </div>
-            </div>
+    <section class="section plan-section" aria-labelledby="plan-title">
+      <div class="shell">
+        <div class="section-label-row">
+          <p class="eyebrow">接下来</p>
+          <p class="section-aside">来自社团转型讨论稿</p>
         </div>
-    </div>
+        <div class="plan-layout">
+          <h2 id="plan-title">不急着宣布<br><em>一个最终答案。</em></h2>
+          <div class="plan-list">
+            <div class="plan-item"><span class="plan-number">A</span><div><h3>了解实际需求</h3><p>通过问卷和访谈，了解成员对编程、AI、计算机原理和活动形式的兴趣。</p></div></div>
+            <div class="plan-item"><span class="plan-number">B</span><div><h3>完成一次低门槛实践</h3><p>先试行一次有明确产出的活动，再根据反馈判断方向是否合适。</p></div></div>
+            <div class="plan-item"><span class="plan-number">C</span><div><h3>把资料留下来</h3><p>记录活动、作品和问题，让下一次活动不必从零开始。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2775184711&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>FL.</h2>
-                    <p>极致网络社<br />
-                    2022级成员<br />
-                    MC生存建筑大佬</p>
-                    <span>QQ:2775184711</span><br>
-                    <span>Email:2775184711@qq.com</span>
-                </div>
-            </div>
+    <section class="section team-section" id="team" aria-labelledby="team-title">
+      <div class="shell">
+        <div class="section-label-row">
+          <div><p class="eyebrow">社团成员</p><h2 id="team-title">做东西的人</h2></div>
+          <p class="section-aside">成员资料沿用原网站版本<br>各自擅长的方向也不完全一样</p>
         </div>
-    </div>
+        <div class="member-list">
+          <details class="member" open><summary><span class="member-index">01</span><span class="member-name">彷徨中独步</span><span class="member-role">网站负责人</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2021级成员 <span>QQ:1393889317</span> <span>Email:1393889317@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">02</span><span class="member-name">内卷魔方鸭</span><span class="member-role">C++</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2022级成员 <span>QQ:3260893736</span> <span>Email:3260893736@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">03</span><span class="member-name">鑫骐</span><span class="member-role">2022级社长 · C++</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 <span>QQ:3156477473</span> <span>Email:3156477473@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">04</span><span class="member-name">溪深而鱼肥</span><span class="member-role">影视后期 · 前期拍摄</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2021级社长 <span>QQ:2494812413</span> <span>Email:2494812413@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">05</span><span class="member-name">ah</span><span class="member-role">城西校区现任社长</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2022级成员 <span>QQ:3565756799</span> <span>Email:3565756799@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">06</span><span class="member-name">和风</span><span class="member-role">2021级城西社长</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 <span>QQ:2325194851</span> <span>Email:2325194851@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">07</span><span class="member-name">FL.</span><span class="member-role">MC生存建筑</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2022级成员 <span>QQ:2775184711</span> <span>Email:2775184711@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">08</span><span class="member-name">醯</span><span class="member-role">社团成员</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2022级成员 <span>QQ:1719387447</span> <span>Email:1719387447@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">09</span><span class="member-name">somebody康</span><span class="member-role">社团成员</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2021级成员 · 抽象带师，超级舟批（应本人要求修改） <span>QQ:2579311246</span> <span>Email:2579311246@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">10</span><span class="member-name">Adlin張</span><span class="member-role">视频后期制作</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2019级成员 <span>QQ:2430956729</span> <span>Email:2430956729@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">11</span><span class="member-name">白菜</span><span class="member-role">2020级社长</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 应本人要求暂时留空 <span>QQ:1229495152</span> <span>Email:1229495152@qq.com</span></div></details>
+          <details class="member"><summary><span class="member-index">12</span><span class="member-name">awcyvan</span><span class="member-role">编程团队核心成员</span><span class="member-arrow">+</span></summary><div class="member-info">极致网络社 · 2021级成员 <a href="awcyvan.html">查看负责人页面 →</a> <span>QQ:3107918016</span> <span>Email:3107918016@qq.com</span></div></details>
+        </div>
+      </div>
+    </section>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1719387447&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>醯</h2>
-                    <p>极致网络社<br />
-                    2022级成员<br />
-                    社团颜值担当（妹纸）</p>
-                    <span>QQ:1719387447</span><br>
-                    <span>Email:1719387447@qq.com</span>
-                </div>
-            </div>
+    <section class="section resources-section" id="resources" aria-labelledby="resources-title">
+      <div class="shell resources-layout">
+        <div>
+          <p class="eyebrow">站点与资源</p>
+          <h2 id="resources-title">这里还留着一些<br><em>以前做过的东西。</em></h2>
+          <p class="resource-intro">网站不只记录现在，也保留社团过去留下的页面。部分项目还在建设中，链接状态可能会变化。</p>
         </div>
-    </div>
+        <div class="resource-links">
+          <a href="https://awcyvan.github.io/exclub.github.io/" target="_blank" rel="noopener"><span>01</span><strong>极致网络社旧站</strong><i>↗</i></a>
+          <a href="https://love.exclub.top" target="_blank" rel="noopener"><span>02</span><strong>泸州高中极致表白墙</strong><i>↗</i></a>
+          <a href="./clock.html"><span>03</span><strong>小工具与小游戏</strong><i>→</i></a>
+          <a href="./404.html"><span>04</span><strong>极致 MC 服务器（待建）</strong><i>→</i></a>
+          <a href="http://shop.exclub.top/" target="_blank" rel="noopener"><span>05</span><strong>极致网络商城</strong><i>↗</i></a>
+        </div>
+      </div>
+    </section>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2579311246&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>somebody康</h2>
-                    <p>极致网络社<br />
-                    2021级成员<br />
-                    抽象带师，超级舟批（应本人要求修改）</p>
-                    <span>QQ:2579311246</span><br>
-                    <span>Email:2579311246@qq.com</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="join-section" id="join" aria-labelledby="join-title">
+      <div class="shell join-inner">
+        <div><p class="eyebrow">想一起参加</p><h2 id="join-title">先来聊聊你想做什么。</h2></div>
+        <div><p>各个成员的联系方式在社团总群。无论是刚开始接触计算机，还是已经在写代码，都可以先加入讨论。</p><a class="button button-light" href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&amp;jump_from=webapi&amp;authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE" target="_blank" rel="noopener">加入极致网络社 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=2430956729&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>Adlin張</h2>
-                    <p>极致网络社<br />
-                    2019级成员<br />
-                    擅长视频后期制作</p>
-                    <span>QQ:2430956729</span><br>
-                    <span>Email:2430956729@qq.com</span>
-                </div>
-            </div>
-        </div>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="brand footer-brand" href="#top"><span><strong>极致网络社</strong><small>TOPSOFT-international</small></span></a><p>由一群网络爱好者组成的学生技术社团。<br>不忘初心，方得始终。</p></div>
+      <div><p class="footer-label">联系</p><a href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&amp;jump_from=webapi&amp;authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE" target="_blank" rel="noopener">极致网络社总群 ↗</a><br><a href="https://tool.gljlw.com/qq/?qq=1393889317" target="_blank" rel="noopener">联系网站负责人 ↗</a></div>
+      <div><p class="footer-label">站点</p><a href="./awcyvan.html">负责人页面</a><br><a href="./memorygame.html">小游戏</a><br><a href="./404.html">待建设页面</a></div>
     </div>
+    <div class="shell footer-bottom"><span>© 极致网络社</span><span>网站持续整理中</span></div>
+  </footer>
 
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=1229495152&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2>白菜</h2>
-                    <p>极致网络社<br />
-                    2020级社长<br />
-                    应本人要求暂时留空</p>
-                    <span>QQ:1229495152</span><br>
-                    <span>Email:1229495152@qq.com</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="awcyvan_container">
-        <div class="awcyvan_card">
-            <div class="lines"></div>
-            <div class="imgbox">
-                <img src="http://q1.qlogo.cn/g?b=qq&amp;nk=3107918016&amp;s=640">
-            </div>
-            <div class="content">
-                <div class="details">
-                    <h2><a href="./awcyvan.html">awcyvan</a></h2>
-                    <p>极致网络社<br />
-                    2021级成员<br />
-                    编程团队核心成员</p>
-                    <span>QQ:3107918016</span><br>
-                    <span>Email:3107918016@qq.com</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
+  <script src="static/js/site.js"></script>
 </body>
-
-<footer id="footer">
-<div class="footer-top">
-<div class="container">
-<div class="row">
-<div class="col-lg-3 col-md-6 footer-links">
-<h4>关于我们</h4>
-
-<p>极致网络社，全称TOPSOFT-international由一群网络爱好者组成的社团，欢迎各位网络计算机爱好者加入我们。</p>
-</div>
-
-<div class="col-lg-3 col-md-6 footer-links">
-<h4>友情链接</h4>
-
-<ul>
-	<li><a href="https://love.exclub.top">极致表白墙</a></li>
-	<li><a href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">极致网络社 总群</a></li>
-	<li><a href="https://tool.gljlw.com/qq/?qq=1393889317">联系网站负责人</a></li>
-</ul>
-</div>
-
-<div class="col-lg-3 col-md-6 footer-contact">
-<h4>联系我们</h4>
-
-<p>让您的需求得到最快速的回复，付出的每一分钱都会得到最大价值的发挥。<br />
-各个成员的联系方式在总群 <a href="https://qm.qq.com/cgi-bin/qm/qr?k=X78BXS3GPqKQI8qZFkBOYeE2OFZiVRZ5&jump_from=webapi&authKey=dlEL1zpl6dccUEoHBJ4lcfcyebdSodxH7apOvu3MW9T4zhwl5leeJUyWDfdWJ1bE">点击进入</a> ，加入我们内部团队联系极致网络社</p>
-
-<div class="social-links"></div>
-</div>
-
-<div class="container">
-<div class="copyright">&copy; Copyright <strong>极致网络社</strong>. All Rights Reserved</div>
-
-<div class="credits"><script type="text/javascript" src="static/js/hitokoto.js"></script>
-<div id="hitokoto"><script>hitokoto()</script></div>
-</div>
-</div>
-</footer>
-<script src="static/js/jquery.min.js"></script><script src="static/js/jquery-migrate.min.js"></script><script src="static/js/bootstrap.bundle.min.js"></script><script src="static/js/easing.min.js"></script><script src="static/js/hoverintent.js"></script><script src="static/js/superfish.min.js"></script><script src="static/js/wow.min.js"></script><script src="static/js/waypoints.min.js"></script><script src="static/js/counterup.min.js"></script><script src="static/js/owl.carousel.min.js"></script><script src="static/js/isotope.pkgd.min.js"></script><script src="static/js/lightbox.min.js"></script><script src="static/js/jquery.touchswipe.min.js"></script><script src="static/js/contactform.js"></script><script src="static/js/main.js"></script>
 </html>

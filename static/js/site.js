@@ -1,35 +1,40 @@
 (function () {
-  var header = document.getElementById('header');
-  var menuButton = document.querySelector('.menu-toggle');
+  var button = document.querySelector('.menu-toggle');
   var nav = document.getElementById('site-nav');
-  var navLinks = document.querySelectorAll('.site-nav a');
+  if (!button || !nav) return;
 
-  function closeMenu() {
-    document.body.classList.remove('menu-open');
-    if (menuButton) menuButton.setAttribute('aria-expanded', 'false');
+  var mobile = window.matchMedia('(max-width: 900px)');
+
+  function setOpen(open) {
+    var shouldOpen = mobile.matches && open;
+    button.setAttribute('aria-expanded', String(shouldOpen));
+    button.setAttribute('aria-label', shouldOpen ? '关闭导航' : '打开导航');
+    nav.hidden = mobile.matches && !shouldOpen;
+    if (!shouldOpen && document.activeElement && nav.contains(document.activeElement)) button.focus();
   }
 
-  if (menuButton) {
-    menuButton.addEventListener('click', function () {
-      var isOpen = document.body.classList.toggle('menu-open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-    });
+  function updateNavigation() {
+    document.body.classList.add('nav-ready');
+    setOpen(false);
   }
 
-  navLinks.forEach(function (link) {
-    link.addEventListener('click', closeMenu);
+  nav.hidden = mobile.matches;
+  document.body.classList.add('nav-ready');
+  button.addEventListener('click', function () {
+    setOpen(button.getAttribute('aria-expanded') !== 'true');
   });
-
-  document.addEventListener('click', function (event) {
-    if (document.body.classList.contains('menu-open') && !nav.contains(event.target) && !menuButton.contains(event.target)) {
-      closeMenu();
+  nav.addEventListener('click', function (event) {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      button.focus();
     }
   });
-
-  function updateHeader() {
-    header.classList.toggle('is-scrolled', window.scrollY > 24);
-  }
-
-  updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  document.addEventListener('click', function (event) {
+    if (mobile.matches && button.getAttribute('aria-expanded') === 'true' &&
+        !nav.contains(event.target) && !button.contains(event.target)) setOpen(false);
+  });
+  mobile.addEventListener('change', updateNavigation);
 })();

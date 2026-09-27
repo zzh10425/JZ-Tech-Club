@@ -2,7 +2,7 @@
 :root { --ink:#333; --muted:#666; --line:#ddd; --paper:#fff; --soft:#f6f7f7; --blue:#87ceeb; --blue-dark:#347f9e; --shell:min(1080px,calc(100% - 40px)); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:76px; }
-body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.7 Arial,"Microsoft YaHei",sans-serif; }
+body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.7 "JetBrainsMono Nerd Font Mono","Noto Sans Mono CJK SC",monospace; }
 a { color:#286d89; text-decoration:underline; text-underline-offset:3px; }
 a:hover { color:#17465a; }
 a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #287e9f; outline-offset:3px; }

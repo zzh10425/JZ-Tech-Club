@@ -10,6 +10,8 @@
 - `static/css/modern.css`、`static/js/site.js`：首页与档案页共用样式和移动导航。
 - `static/images/bg.png`：沿用旧站页头照片。
 
+页面优先使用系统已安装的 JetBrainsMono Nerd Font Mono（西文、数字）和 Noto Sans Mono CJK SC（中文）；未安装时由浏览器回退到等宽字体。网页不打包终端 Nerd Font 字体，也不请求外部字体服务。
+
 ## 内容来源与维护
 
 旧站成员信息来自原网站 `https://awcyvan.github.io/exclub.github.io/` 的成员记录，保留了原姓名、年级、职务/自述和联系方式。旧站使用的“现任”只是旧页面当时的历史文字，不代表现在仍任职；年级也没有被推定为任期。档案中标为待补充的现任社长、副社长和创始人，需要负责人核实后再更新。

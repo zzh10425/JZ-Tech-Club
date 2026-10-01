@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import csv
 import html
-import os
 import re
 import shutil
 from pathlib import Path
@@ -18,79 +17,13 @@ INDEX_HTML = ROOT / "index.html"
 PEOPLE_HTML = ROOT / "people.html"
 DIST = ROOT / "dist"
 PUBLIC_HTML_FILES = (
-    Path("404.html"),
-    Path("awcyvan.html"),
-    Path("clock.html"),
-    Path("eyes.html"),
-    Path("memorygame.html"),
-    Path("zen.html"),
+    "404.html",
+    "awcyvan.html",
+    "clock.html",
+    "eyes.html",
+    "memorygame.html",
+    "zen.html",
 )
-PRIVATE_OUTPUT_DIRS = (Path("data"), Path("scripts"), Path(".git"))
-PRIVATE_OUTPUT_FILES = (Path("README.md"), Path(".gitignore"))
-PRIVATE_OUTPUT_BASENAMES = {"people.csv", "people_hide.csv"}
-
-
-def private_artifacts(output_dir: Path) -> list[Path]:
-    """Return known source/private paths found under the generated output."""
-    found: set[Path] = set()
-    for directory in PRIVATE_OUTPUT_DIRS:
-        target = output_dir / directory
-        if target.exists():
-            if directory == Path("data"):
-                for path in target.rglob("*"):
-                    if path.is_file():
-                        found.add(path.relative_to(output_dir))
-            else:
-                found.add(directory)
-
-    for relative in PRIVATE_OUTPUT_FILES:
-        if (output_dir / relative).exists():
-            found.add(relative)
-    for path in output_dir.rglob("*.py"):
-        if path.is_file():
-            found.add(path.relative_to(output_dir))
-    for path in output_dir.rglob("*"):
-        if path.is_file() and path.name in PRIVATE_OUTPUT_BASENAMES:
-            found.add(path.relative_to(output_dir))
-    return sorted(found, key=lambda path: path.as_posix())
-
-
-def check_private_artifacts(output_dir: Path) -> None:
-    """Warn locally or remove and verify private paths in Cloudflare builds."""
-    is_cloudflare = os.environ.get("JZ_CLOUDFLARE_BUILD", "").lower() == "true"
-    artifacts = private_artifacts(output_dir)
-    if is_cloudflare:
-        print("Cloudflare build mode enabled.")
-        print("Cleaning private build artifacts...")
-        # All deletion targets are constructed beneath output_dir; never touch source paths.
-        for artifact in artifacts:
-            target = output_dir / artifact
-            if not target.resolve().is_relative_to(output_dir.resolve()):
-                raise RuntimeError(f"Refusing to clean a path outside the build output: {target}")
-            if target.is_dir():
-                shutil.rmtree(target)
-            elif target.exists():
-                target.unlink()
-
-        data_dir = output_dir / "data"
-        if data_dir.is_dir() and not any(data_dir.iterdir()):
-            data_dir.rmdir()
-
-        remaining = private_artifacts(output_dir)
-        if remaining:
-            paths = ", ".join(path.as_posix() for path in remaining)
-            raise RuntimeError(f"Private build artifacts remain after Cloudflare cleanup: {paths}")
-        print("Private build artifacts: none")
-        return
-
-    if artifacts:
-        print("WARNING: Private build artifacts detected:")
-        for artifact in artifacts:
-            print(f"  - {output_dir.name}/{artifact.as_posix()}")
-        print("WARNING: private source data exists in the build output.")
-        print("This is not a Cloudflare build, so no files were removed.")
-        print("Set JZ_CLOUDFLARE_BUILD=true only in the Cloudflare Pages build environment")
-        print("to enable automatic cleanup.")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -265,13 +198,11 @@ def replace_leader(document: str, role: str, name: str) -> str:
 
 
 def generate(output_dir: Path = DIST) -> int:
-    """Generate the deployable site into ``output_dir`` and return the period year."""
+    """Generate the complete deployable site into ``dist/``."""
     output_dir = Path(output_dir)
     if DIST.is_symlink() or output_dir.resolve() != DIST.resolve():
         raise ValueError(f"output_dir must be the dist directory: {DIST}")
-    is_cloudflare = os.environ.get("JZ_CLOUDFLARE_BUILD", "").lower() == "true"
-    if is_cloudflare and output_dir.exists():
-        print("Cloudflare build mode enabled; preparing a clean dist directory.")
+    if output_dir.exists():
         shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     records = read_csv(PEOPLE_CSV)
@@ -310,10 +241,9 @@ def generate(output_dir: Path = DIST) -> int:
     people_html = replace_region(people_html, "CURRENT", render_current(records, hide_by_id, current_year))
     people_html = replace_region(people_html, "PAST", render_past(records, hide_by_id, current_year))
     (output_dir / "people.html").write_text(people_html, encoding="utf-8")
-    for relative_path in PUBLIC_HTML_FILES:
-        shutil.copy2(ROOT / relative_path, output_dir / relative_path.name)
-    shutil.copytree(ROOT / "static", output_dir / "static", dirs_exist_ok=True)
-    check_private_artifacts(output_dir)
+    for filename in PUBLIC_HTML_FILES:
+        shutil.copy2(ROOT / filename, output_dir / filename)
+    shutil.copytree(ROOT / "static", output_dir / "static")
     return current_year
 
 

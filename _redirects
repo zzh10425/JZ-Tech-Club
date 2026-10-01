@@ -1,0 +1,3 @@
+/data/*    /404.html  302
+/scripts/* /404.html  302
+/*.py      /404.html  302

@@ -9,7 +9,7 @@
 - `awcyvan.html`、`clock.html`、`memorygame.html`、`eyes.html`、`zen.html`：保留的旧个人页与小工具。
 - `static/css/modern.css`、`static/js/site.js`：首页与档案页共用样式和移动导航。
 - `static/images/bg.png`：沿用旧站页头照片。
-- `scripts/generate_people.py`：从 `data/people.csv` 生成首页负责人和成员信息静态 HTML。
+- `scripts/generate_people.py`：从私有源数据生成 `dist/` 部署目录，不覆盖仓库根目录页面。
 - `scripts/view_server.py`：在临时目录生成并启动本地预览，不覆盖根目录 HTML。
 
 页面使用仓库内打包的 JetBrains Mono Nerd Font Mono（西文、数字）和 Noto Sans Mono CJK SC（中文）字体文件，确保不同设备上的显示效果一致。字体文件随项目静态资源一同分发，不依赖用户系统是否安装对应字体，也不请求外部字体服务。
@@ -30,11 +30,13 @@
 序号,类别,职位,姓名,年级,自述,补充信息,QQ,Email,链接说明,链接
 ```
 
-社团方向目前仍在讨论，详见[社团发展方向讨论稿](https://github.com/zzh10425/club-work/blob/main/%E5%BA%94%E5%AF%B9%E7%AD%96%E7%95%A5.md)。不要将未确认人员信息或讨论内容写成已确定事实。更新人员资料时请核实本人同意公开的字段；修改 `data/people.csv` 后运行 `python scripts/generate_people.py`，生成并更新 `index.html` 与 `people.html`。
+社团方向目前仍在讨论，详见[社团发展方向讨论稿](https://github.com/zzh10425/club-work/blob/main/%E5%BA%94%E5%AF%B9%E7%AD%96%E7%95%A5.md)。不要将未确认人员信息或讨论内容写成已确定事实。更新人员资料时请核实本人同意公开的字段；修改 `data/people.csv` 后运行 `python scripts/generate_people.py`，重新生成 `dist/`。
 
 旧站资源和友情链接可能失效。新增或调整外链前请核对目标；待建页不作为现有项目入口展示。
 
 `awcyvan.html` 原有引用 `./static/css/google-front.css`，但仓库中没有该文件。这是旧个人页遗留问题；本次未替换该页面风格。
+
+Cloudflare Pages：Root Directory 设为 `.`，Build command 设为 `python scripts/generate_people.py`，Output directory 设为 `dist`。构建只部署生成的 `dist/`，不会删除仓库源码或 CSV 数据。
 
 ## 本地预览
 
@@ -44,4 +46,4 @@
 python scripts/view_server.py
 ```
 
-脚本会输出随机可用端口的 `http://127.0.0.1:PORT/` 地址，并尝试自动打开浏览器。修改 `data/people.csv` 后，预览会重新生成页面；正式更新仍运行 `python scripts/generate_people.py`。
+脚本会输出随机可用端口的 `http://127.0.0.1:PORT/` 地址，并尝试自动打开浏览器。修改 `data/people.csv` 后，预览会重新生成页面；正式部署同样运行 `python scripts/generate_people.py` 并将 `dist/` 作为输出目录。

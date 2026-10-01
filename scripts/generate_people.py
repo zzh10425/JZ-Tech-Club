@@ -17,8 +17,17 @@ HIDE_CSV = ROOT / "data" / "people_hide.csv"
 INDEX_HTML = ROOT / "index.html"
 PEOPLE_HTML = ROOT / "people.html"
 DIST = ROOT / "dist"
+PUBLIC_HTML_FILES = (
+    Path("404.html"),
+    Path("awcyvan.html"),
+    Path("clock.html"),
+    Path("eyes.html"),
+    Path("memorygame.html"),
+    Path("zen.html"),
+)
 PRIVATE_OUTPUT_DIRS = (Path("data"), Path("scripts"), Path(".git"))
 PRIVATE_OUTPUT_FILES = (Path("README.md"), Path(".gitignore"))
+PRIVATE_OUTPUT_BASENAMES = {"people.csv", "people_hide.csv"}
 
 
 def private_artifacts(output_dir: Path) -> list[Path]:
@@ -39,6 +48,9 @@ def private_artifacts(output_dir: Path) -> list[Path]:
             found.add(relative)
     for path in output_dir.rglob("*.py"):
         if path.is_file():
+            found.add(path.relative_to(output_dir))
+    for path in output_dir.rglob("*"):
+        if path.is_file() and path.name in PRIVATE_OUTPUT_BASENAMES:
             found.add(path.relative_to(output_dir))
     return sorted(found, key=lambda path: path.as_posix())
 
@@ -255,8 +267,12 @@ def replace_leader(document: str, role: str, name: str) -> str:
 def generate(output_dir: Path = DIST) -> int:
     """Generate the deployable site into ``output_dir`` and return the period year."""
     output_dir = Path(output_dir)
-    if output_dir.resolve() != DIST.resolve():
+    if DIST.is_symlink() or output_dir.resolve() != DIST.resolve():
         raise ValueError(f"output_dir must be the dist directory: {DIST}")
+    is_cloudflare = os.environ.get("JZ_CLOUDFLARE_BUILD", "").lower() == "true"
+    if is_cloudflare and output_dir.exists():
+        print("Cloudflare build mode enabled; preparing a clean dist directory.")
+        shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     records = read_csv(PEOPLE_CSV)
     hidden_records = read_csv(HIDE_CSV) if HIDE_CSV.exists() else []
@@ -294,6 +310,8 @@ def generate(output_dir: Path = DIST) -> int:
     people_html = replace_region(people_html, "CURRENT", render_current(records, hide_by_id, current_year))
     people_html = replace_region(people_html, "PAST", render_past(records, hide_by_id, current_year))
     (output_dir / "people.html").write_text(people_html, encoding="utf-8")
+    for relative_path in PUBLIC_HTML_FILES:
+        shutil.copy2(ROOT / relative_path, output_dir / relative_path.name)
     shutil.copytree(ROOT / "static", output_dir / "static", dirs_exist_ok=True)
     check_private_artifacts(output_dir)
     return current_year

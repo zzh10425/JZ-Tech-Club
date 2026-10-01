@@ -1,0 +1,10 @@
+/data/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/scripts/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/*.py
+  X-Robots-Tag: noindex, nofollow

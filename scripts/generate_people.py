@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import html
 import re
+import shutil
 from pathlib import Path
 
 
@@ -14,6 +15,7 @@ PEOPLE_CSV = ROOT / "data" / "people.csv"
 HIDE_CSV = ROOT / "data" / "people_hide.csv"
 INDEX_HTML = ROOT / "index.html"
 PEOPLE_HTML = ROOT / "people.html"
+DIST = ROOT / "dist"
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -187,9 +189,13 @@ def replace_leader(document: str, role: str, name: str) -> str:
     return document[:start_at] + escape(name or "待补充") + document[end_at:]
 
 
-def generate(output_dir: Path = ROOT) -> int:
-    """Generate the member sections into ``output_dir`` and return the period year."""
+def generate(output_dir: Path = DIST) -> int:
+    """Generate the deployable site into ``output_dir`` and return the period year."""
     output_dir = Path(output_dir)
+    if output_dir.resolve() == ROOT.resolve():
+        raise ValueError("output_dir must not be the source repository root")
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     records = read_csv(PEOPLE_CSV)
     hidden_records = read_csv(HIDE_CSV) if HIDE_CSV.exists() else []
@@ -227,12 +233,13 @@ def generate(output_dir: Path = ROOT) -> int:
     people_html = replace_region(people_html, "CURRENT", render_current(records, hide_by_id, current_year))
     people_html = replace_region(people_html, "PAST", render_past(records, hide_by_id, current_year))
     (output_dir / "people.html").write_text(people_html, encoding="utf-8")
+    shutil.copytree(ROOT / "static", output_dir / "static")
     return current_year
 
 
 def main() -> None:
-    current_year = generate(ROOT)
-    print(f"Generated member pages for {current_year} from {PEOPLE_CSV.relative_to(ROOT)}")
+    current_year = generate(DIST)
+    print(f"Generated dist for {current_year} from {PEOPLE_CSV.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

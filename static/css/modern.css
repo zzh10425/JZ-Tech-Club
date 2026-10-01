@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@font-face { font-family:"JetBrainsMono Nerd Font Mono";src:url("../fonts/JetBrainsMonoNerdFontMono-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap; }
+@font-face { font-family:"Noto Sans Mono CJK SC";src:url("../fonts/NotoSansMonoCJKsc-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap; }
 :root { --ink:#333; --muted:#666; --line:#ddd; --paper:#fff; --soft:#f6f7f7; --blue:#87ceeb; --blue-dark:#347f9e; --shell:min(1080px,calc(100% - 40px)); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:76px; }
@@ -48,11 +50,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #
 .page-heading { padding:38px 0 25px; }.page-heading h1 { margin:0 0 8px;font-size:32px;font-weight:500; }.page-heading p { margin:0;color:var(--muted); }
 .archive-section { padding:26px 0 38px;border-top:1px solid var(--line); }.archive-section h2 { margin:0 0 15px;font-size:23px;font-weight:500; }
 .archive-note { color:var(--muted);font-size:14px; }
+.archive-year { border-bottom:1px solid var(--line); }.archive-year > summary { min-height:44px;padding:9px 0;line-height:26px;cursor:pointer;font-weight:600; }.archive-year .archive-list { margin:0 0 0 20px;border-top:1px solid var(--line); }
 .archive-list { margin:0;border-top:1px solid var(--line); }.archive-person { border-bottom:1px solid var(--line);padding:12px 0; }
 .archive-person summary { display:list-item;min-height:44px;padding:9px 0;line-height:26px;cursor:pointer;font-weight:600;overflow-wrap:anywhere; }
 .archive-person summary span { margin-left:10px;color:var(--muted);font-size:14px;font-weight:400; }
 .archive-info { padding:7px 0 2px 20px;color:var(--muted);font-size:14px; }.archive-info p { margin:3px 0; }.archive-info a { display:inline-block;margin-top:4px; }
 .archive-info p { overflow-wrap:anywhere; }
+.member-entry-heading { margin:0;padding:9px 0;line-height:26px;font-weight:600; }
 .small-note { font-size:13px; }
 @media(max-width:900px) {
  :root { --shell:calc(100% - 30px); }

@@ -36,6 +36,8 @@
 
 Cloudflare Pages 构建设置：构建命令为 `python scripts/generate_people.py`，输出目录为 `dist`。只部署 `dist/`，不要使用 `npx wrangler deploy`。
 
+Cloudflare Pages 环境变量设置为 `JZ_CLOUDFLARE_BUILD=true`，构建时会清理 `dist/` 中不应公开的源数据。本地构建不会删除文件，只会提示 WARNING。
+
 `awcyvan.html` 原有引用 `./static/css/google-front.css`，但仓库中没有该文件。这是旧个人页遗留问题；本次未替换该页面风格。
 
 ## 本地预览

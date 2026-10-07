@@ -224,13 +224,19 @@ def generate(output_dir: Path = DIST) -> int:
     ]
 
     president = next((r for r in current if r.get("职位") == "社长"), None)
-    vice = next((r for r in current if r.get("职位") == "副社长"), None)
+    vice_names = [r.get("姓名", "") for r in current if r.get("职位") == "副社长"]
     president_name = president.get("姓名", "") if president else ""
-    vice_name = vice.get("姓名", "") if vice else ""
+    vice_name = "、".join(name for name in vice_names if name)
     if president and hide_by_id.get(president.get("序号", ""), {}).get("姓名") == "hide":
         president_name = ""
-    if vice and hide_by_id.get(vice.get("序号", ""), {}).get("姓名") == "hide":
-        vice_name = ""
+    vice_name = "、".join(
+        name
+        for record, name in zip(
+            (r for r in current if r.get("职位") == "副社长"),
+            vice_names,
+        )
+        if name and hide_by_id.get(record.get("序号", ""), {}).get("姓名") != "hide"
+    )
 
     index_html = INDEX_HTML.read_text(encoding="utf-8")
     index_html = replace_leader(index_html, "PRESIDENT", president_name)
